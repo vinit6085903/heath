@@ -1,6 +1,7 @@
 fastapi
 uvicorn
 pydantic
-tensorflow
+tensorflow-cpu
 numpy
+scikit-learn
 pickle-mixin
