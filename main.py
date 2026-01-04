@@ -1,6 +1,3 @@
-# =========================
-# 1️⃣ IMPORTS
-# =========================
 import os
 import pickle
 import numpy as np
@@ -9,24 +6,37 @@ from pydantic import BaseModel
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+# =========================
+# 1️⃣ BASE DIRECTORY
+# =========================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # =========================
-# 2️⃣ MODEL PATH (CORRECT)
+# 2️⃣ MODEL PATHS (RENDER SAFE)
 # =========================
-MODEL_DIR = r"E:\clinq\data\2\saved_model"
+MODEL_DIR = os.path.join(BASE_DIR, "saved_model")
 
 MODEL_PATH = os.path.join(MODEL_DIR, "disease_lstm_model.keras")
 TOKENIZER_PATH = os.path.join(MODEL_DIR, "tokenizer.pkl")
 ENCODER_PATH = os.path.join(MODEL_DIR, "label_encoder.pkl")
 SUPPORT_PATH = os.path.join(MODEL_DIR, "support_data.pkl")
 
-# Safety checks
-if not os.path.exists(MODEL_PATH):
-    raise FileNotFoundError(f"❌ Model not found at {MODEL_PATH}")
+# =========================
+# 3️⃣ SAFETY CHECKS
+# =========================
+required_files = [
+    MODEL_PATH,
+    TOKENIZER_PATH,
+    ENCODER_PATH,
+    SUPPORT_PATH
+]
 
+for file in required_files:
+    if not os.path.exists(file):
+        raise FileNotFoundError(f"❌ Required file missing: {file}")
 
 # =========================
-# 3️⃣ LOAD MODEL & FILES
+# 4️⃣ LOAD MODEL & FILES
 # =========================
 model = load_model(MODEL_PATH)
 
@@ -43,9 +53,8 @@ desc_map = support_data["desc_map"]
 prec_map = support_data["prec_map"]
 severity_map = support_data["severity_map"]
 
-
 # =========================
-# 4️⃣ HIGH-RISK DISEASE LIST
+# 5️⃣ HIGH-RISK DISEASES
 # =========================
 HIGH_RISK_DISEASES = {
     "Paralysis (brain hemorrhage)",
@@ -56,26 +65,23 @@ HIGH_RISK_DISEASES = {
     "Malaria"
 }
 
-
 # =========================
-# 5️⃣ FASTAPI APP
+# 6️⃣ FASTAPI APP
 # =========================
 app = FastAPI(
     title="AI Disease Prediction API",
-    description="AI-based disease prediction using Bi-LSTM (Educational purpose)",
+    description="AI-based disease prediction using Bi-LSTM (Educational purpose only)",
     version="1.0"
 )
 
-
 # =========================
-# 6️⃣ REQUEST MODEL
+# 7️⃣ REQUEST MODEL
 # =========================
 class SymptomRequest(BaseModel):
-    symptoms: str   # example: "fever, headache, vomiting"
-
+    symptoms: str  # e.g. "fever, headache, vomiting"
 
 # =========================
-# 7️⃣ RISK CALCULATION (IMPROVED)
+# 8️⃣ RISK CALCULATION
 # =========================
 def calculate_risk(symptom_text: str, disease: str, confidence: float):
 
@@ -86,38 +92,32 @@ def calculate_risk(symptom_text: str, disease: str, confidence: float):
 
     severity_score = sum(severity_map.get(s, 0) for s in symptoms)
 
-    # Rule 1: Serious disease + high confidence
     if disease in HIGH_RISK_DISEASES and confidence >= 70:
         return "HIGH"
 
-    # Rule 2: Symptom severity based
     if severity_score >= 30:
         return "HIGH"
     elif severity_score >= 15:
         return "MEDIUM"
 
-    # Rule 3: High confidence but low severity
     if confidence >= 85:
         return "MEDIUM"
 
     return "LOW"
 
-
 # =========================
-# 8️⃣ ROOT ENDPOINT
+# 9️⃣ ROOT ENDPOINT
 # =========================
 @app.get("/")
 def home():
     return {"message": "AI Disease Prediction API is running 🚀"}
 
-
 # =========================
-# 9️⃣ PREDICTION ENDPOINT
+# 🔟 PREDICTION ENDPOINT
 # =========================
 @app.post("/predict")
 def predict_disease(data: SymptomRequest):
 
-    # 🔹 Preprocess input (same as training)
     clean_text = " ".join(
         s.strip().lower().replace(" ", "_")
         for s in data.symptoms.split(",")
@@ -126,7 +126,6 @@ def predict_disease(data: SymptomRequest):
     seq = tokenizer.texts_to_sequences([clean_text])
     pad = pad_sequences(seq, maxlen=30, padding="post")
 
-    # 🔹 Predict
     probs = model.predict(pad, verbose=0)[0]
     idx = int(np.argmax(probs))
 
