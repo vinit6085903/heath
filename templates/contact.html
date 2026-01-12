@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contact - Equinox Sphere</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111618] dark:text-white min-h-screen flex flex-col">
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 w-full bg-white dark:bg-background-dark border-b border-[#f0f3f4] dark:border-gray-800">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="text-primary">
+                    <svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+                    </svg>
+                </div>
+                <h2 class="text-lg font-bold tracking-tight">Equinox Sphere</h2>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#" class="hover:text-primary transition-colors">Home</a>
+                <a href="#" class="hover:text-primary transition-colors">About</a>
+                <a href="#" class="hover:text-primary transition-colors">How It Works</a>
+                <a href="#" class="hover:text-primary transition-colors">Research</a>
+                <a href="#" class="text-primary font-semibold">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center py-12 px-6">
+        <div class="max-w-[1000px] w-full flex flex-col gap-8">
+            <!-- Headline -->
+            <div class="text-center space-y-2">
+                <h1 class="text-4xl font-extrabold tracking-tight dark:text-white">Contact Equinox Sphere</h1>
+                <p class="text-[#617f89] dark:text-gray-400 max-w-2xl mx-auto">
+                    Have questions about our AI-driven disease prediction system? Our team of medical and AI experts is ready to assist you.
+                </p>
+            </div>
+            
+            <!-- Main Contact Card -->
+            <div class="bg-white dark:bg-background-dark/50 rounded-xl shadow-xl overflow-hidden border border-[#dbe3e6] dark:border-gray-800 flex flex-col md:flex-row">
+                <!-- Left Section: Contact Form -->
+                <div class="flex-1 p-8 md:p-12 border-r border-[#f0f3f4] dark:border-gray-800">
+                    <h3 class="text-xl font-bold mb-6">Send us a message</h3>
+                    <form class="space-y-5">
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold">Name</label>
+                            <input class="w-full h-12 rounded-lg border-[#dbe3e6] dark:border-gray-700 dark:bg-gray-900 focus:border-primary focus:ring-1 focus:ring-primary text-base px-4" placeholder="Enter your full name" type="text"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold">Email</label>
+                            <input class="w-full h-12 rounded-lg border-[#dbe3e6] dark:border-gray-700 dark:bg-gray-900 focus:border-primary focus:ring-1 focus:ring-primary text-base px-4" placeholder="example@medical.com" type="email"/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold">Message</label>
+                            <textarea class="w-full rounded-lg border-[#dbe3e6] dark:border-gray-700 dark:bg-gray-900 focus:border-primary focus:ring-1 focus:ring-primary text-base p-4 resize-none" placeholder="How can we help you?" rows="4"></textarea>
+                        </div>
+                        <button class="w-full bg-primary text-white font-bold h-12 rounded-lg hover:bg-primary/90 transition-colors shadow-md" type="submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Right Section: Company Info -->
+                <div class="w-full md:w-80 bg-[#f9fafb] dark:bg-gray-900/40 p-8 md:p-12 flex flex-col justify-between gap-10">
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-xs uppercase tracking-widest font-bold text-[#617f89] mb-4">Support Channels</p>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary">mail</span>
+                                    <div>
+                                        <p class="font-bold text-sm">Email Support</p>
+                                        <p class="text-sm text-[#617f89] dark:text-gray-400">support@equinoxsphere.ai</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary">location_on</span>
+                                    <div>
+                                        <p class="font-bold text-sm">Global Headquarters</p>
+                                        <p class="text-sm text-[#617f89] dark:text-gray-400">Tech Hub Plaza, Silicon Valley, CA</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <span class="material-symbols-outlined text-primary">schedule</span>
+                                    <div>
+                                        <p class="font-bold text-sm">Working Hours</p>
+                                        <p class="text-sm text-[#617f89] dark:text-gray-400">Mon - Fri: 9am - 6pm PST</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Visual Accent -->
+                    <div class="rounded-lg h-32 w-full bg-gradient-to-r from-primary/20 to-blue-500/20 opacity-80 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary text-6xl">contact_support</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map View Placeholder -->
+            <div class="w-full h-[300px] rounded-xl overflow-hidden border border-[#dbe3e6] dark:border-gray-800">
+                <div class="w-full h-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
+                    <div class="flex flex-col items-center gap-4 text-center p-6">
+                        <span class="material-symbols-outlined text-6xl text-primary">location_on</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Locate us in Silicon Valley</h3>
+                            <p class="text-[#617f89] dark:text-gray-400">Tech Hub Plaza, Palo Alto, California</p>
+                            <p class="text-sm text-[#617f89] dark:text-gray-500 mt-2">Open in Google Maps →</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Medical Disclaimer Footer -->
+    <footer class="w-full bg-white dark:bg-background-dark border-t border-[#f0f3f4] dark:border-gray-800 py-10">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="flex items-center gap-3 opacity-50">
+                    <div class="size-6">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <span class="font-bold text-sm">Equinox Sphere</span>
+                </div>
+                <div class="text-xs text-[#617f89] dark:text-gray-500 leading-relaxed md:text-right">
+                    <p class="font-bold mb-1">Medical Disclaimer</p>
+                    Equinox Sphere AI Health Predictor is an assistive tool and does not replace professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-[#f0f3f4] dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#617f89]">
+                <p>© 2024 Equinox Sphere. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a class="hover:underline hover:text-primary transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:underline hover:text-primary transition-colors" href="#">Terms of Service</a>
+                    <a class="hover:underline hover:text-primary transition-colors" href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            if (!name || !email || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            alert('Message sent successfully! We will get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

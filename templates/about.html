@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About - Equinox Sphere Vision</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111618] dark:text-white antialiased">
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky-nav w-full border-b border-solid border-[#f0f3f4] dark:border-white/10 bg-white/80 dark:bg-background-dark/80 px-4 md:px-20 lg:px-40 py-3">
+        <div class="max-w-[1200px] mx-auto flex items-center justify-between whitespace-nowrap">
+            <div class="flex items-center gap-3 text-primary">
+                <div class="size-8">
+                    <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-[#111618] dark:text-white text-xl font-bold leading-tight tracking-tight">Equinox Sphere</h2>
+            </div>
+            <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                <nav class="flex items-center gap-8">
+                    <a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('home') }}">Home</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('about') }}">About</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('how_it_works') }}">How It Works</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('research') }}">Research</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('contact') }}">Contact</a>
+
+                </nav>
+              
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4 py-12 md:px-20 lg:px-0">
+        <!-- Hero Section -->
+        <section class="mb-20">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="flex-1 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase">
+                        <span class="material-symbols-outlined text-sm">visibility</span>
+                        Our Vision
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#111618] dark:text-white">
+                        The Future of <span class="text-primary">Predictive</span> Healthcare AI
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+                        Democratizing healthcare through advanced deep learning. Equinox Sphere Vision leverages LSTM networks to provide high-accuracy disease prediction and sequential data analysis. We bridge the gap between complex diagnostic data and actionable medical insights.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-base hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+                            Explore Documentation
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                        <div class="flex -space-x-3 overflow-hidden p-2 items-center">
+                            <div class="inline-block size-10 rounded-full ring-2 ring-white dark:ring-background-dark bg-gray-300"></div>
+                            <div class="inline-block size-10 rounded-full ring-2 ring-white dark:ring-background-dark bg-gray-400"></div>
+                            <div class="inline-block size-10 rounded-full ring-2 ring-white dark:ring-background-dark bg-gray-500"></div>
+                            <span class="pl-5 text-sm font-medium text-slate-500">Trusted by 500+ Labs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 w-full">
+                    <div class="aspect-video w-full rounded-2xl bg-gradient-to-br from-primary/20 to-blue-500/20 shadow-2xl overflow-hidden relative group">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <span class="material-symbols-outlined text-8xl text-primary/50 mb-4">
+                                    neuroscience
+                                </span>
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white">AI Medical Visualization</h3>
+                                <p class="text-slate-600 dark:text-slate-300 mt-2">Advanced neural network analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Foundation Section -->
+        <section class="mb-24">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl font-bold tracking-tight">Our Technical Foundation</h2>
+                <div class="h-1.5 w-24 bg-primary mx-auto rounded-full"></div>
+                <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto">Built on rigorous peer-reviewed architectures to ensure patient safety and diagnostic precision.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+                <!-- LSTM Model -->
+                <div class="group p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all shadow-sm hover:shadow-xl">
+                    <div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-3xl">psychology</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">LSTM AI Model</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Long Short-Term Memory networks designed specifically for processing sequential medical data, identifying patterns across decades of patient history.
+                    </p>
+                    <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                        <span>98.2% Accuracy</span>
+                        <span class="material-symbols-outlined text-sm">verified</span>
+                    </div>
+                </div>
+                <!-- Dataset Approach -->
+                <div class="group p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all shadow-sm hover:shadow-xl">
+                    <div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-3xl">database</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Dataset Approach</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Anonymized, HIPAA-compliant diverse datasets ensuring global reliability and eliminating demographic bias in medical predictions.
+                    </p>
+                    <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                        <span>10M+ Records</span>
+                        <span class="material-symbols-outlined text-sm">encrypted</span>
+                    </div>
+                </div>
+                <!-- Accuracy Metrics -->
+                <div class="group p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all shadow-sm hover:shadow-xl">
+                    <div class="size-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-3xl">analytics</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Rigorous Validation</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Continuous cross-validation using triple-blind methodologies to ensure the highest standards of diagnostic precision.
+                    </p>
+                    <div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                        <span>Triple Blinded</span>
+                        <span class="material-symbols-outlined text-sm">query_stats</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Pipeline Section -->
+        <section class="mb-24 py-20 px-10 rounded-3xl bg-gradient-to-r from-slate-800 to-slate-900 text-white overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-primary/10 blur-[120px] rounded-full"></div>
+            <div class="relative z-10 text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">The Prediction Pipeline</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">From raw data ingestion to clinical-grade diagnostics, our pipeline ensures every data point is weighted with precision.</p>
+            </div>
+            <div class="relative flex flex-col md:flex-row justify-between items-start gap-12 max-w-[1000px] mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center flex-1">
+                    <div class="size-16 rounded-full border-2 border-primary flex items-center justify-center mb-4 bg-slate-800 shadow-[0_0_20px_rgba(19,182,236,0.3)]">
+                        <span class="text-xl font-bold text-primary">01</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Ingestion</h4>
+                    <p class="text-xs text-slate-400">Secure EMR & Lab data encrypted normalization</p>
+                </div>
+                <div class="hidden md:block h-px bg-slate-700 flex-1 mt-8"></div>
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center flex-1">
+                    <div class="size-16 rounded-full border-2 border-primary flex items-center justify-center mb-4 bg-slate-800 shadow-[0_0_20px_rgba(19,182,236,0.3)]">
+                        <span class="text-xl font-bold text-primary">02</span>
+                    </div>
+                    <h4 class="font-bold mb-2">LSTM Analysis</h4>
+                    <p class="text-xs text-slate-400">Sequential pattern recognition across timelines</p>
+                </div>
+                <div class="hidden md:block h-px bg-slate-700 flex-1 mt-8"></div>
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center flex-1">
+                    <div class="size-16 rounded-full border-2 border-primary flex items-center justify-center mb-4 bg-slate-800 shadow-[0_0_20px_rgba(19,182,236,0.3)]">
+                        <span class="text-xl font-bold text-primary">03</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Output</h4>
+                    <p class="text-xs text-slate-400">Probabilistic forecasting & medical report</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer Section -->
+        <section class="mb-24 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <h2 class="text-3xl font-bold">Built for Developers & Clinicians</h2>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-primary mt-1">code</span>
+                        <div>
+                            <p class="font-bold">Restful API integration</p>
+                            <p class="text-sm text-slate-500">Easily connect your existing hospital infrastructure to our prediction nodes.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-primary mt-1">description</span>
+                        <div>
+                            <p class="font-bold">Extensive Documentation</p>
+                            <p class="text-sm text-slate-500">Comprehensive guides for model deployment and weight fine-tuning.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="material-symbols-outlined text-primary mt-1">shield_person</span>
+                        <div>
+                            <p class="font-bold">Enterprise-grade Security</p>
+                            <p class="text-sm text-slate-500">SOC2 Type II and HIPAA compliant infrastructure by default.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-950 rounded-2xl p-6 font-mono text-sm text-slate-300 shadow-2xl border border-white/5">
+                <div class="flex gap-2 mb-4">
+                    <div class="size-3 rounded-full bg-red-500"></div>
+                    <div class="size-3 rounded-full bg-yellow-500"></div>
+                    <div class="size-3 rounded-full bg-green-500"></div>
+                </div>
+                <p class="text-slate-500 mb-2">// Initialize Equinox LSTM Predictor</p>
+                <p><span class="text-primary">const</span> predictor = <span class="text-yellow-400">new</span> <span class="text-green-400">EquinoxSphere</span>({</p>
+                <p class="pl-4">apiKey: <span class="text-orange-400">'EQ_V_09238...'</span>,</p>
+                <p class="pl-4">region: <span class="text-orange-400">'us-east-1'</span>,</p>
+                <p class="pl-4">mode: <span class="text-orange-400">'high-precision'</span></p>
+                <p>});</p>
+                <p class="mt-4 text-slate-500">// Fetch diagnostic probabilities</p>
+                <p><span class="text-primary">const</span> report = <span class="text-yellow-400">await</span> predictor.<span class="text-blue-400">predict</span>(patientData);</p>
+                <p><span class="text-slate-500">console</span>.<span class="text-blue-400">log</span>(report.accuracy); <span class="text-slate-500">// 0.982</span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Medical Disclaimer Footer -->
+    <footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-white/10 py-16 px-4 md:px-20">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-2 text-primary font-bold text-lg">
+                        <svg class="size-6" fill="currentColor" viewBox="0 0 48 48">
+                            <path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+                        </svg>
+                        <span>Equinox Sphere Vision</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed max-w-sm">
+                        Building the next generation of predictive medical technologies. We believe AI should be a collaborative tool in the hands of healthcare professionals.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="font-bold text-sm">Product</h5>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li><a class="hover:text-primary transition-colors" href="#">Predictor API</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h5 class="font-bold text-sm">Legal</h5>
+                    <ul class="text-sm text-slate-500 space-y-2">
+                        <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Terms of Use</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">HIPAA Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-6 bg-slate-100 dark:bg-slate-900/50 rounded-xl">
+                <p class="text-[11px] text-slate-500 leading-normal text-center">
+                    <span class="font-bold text-slate-700 dark:text-slate-300">MEDICAL DISCLAIMER:</span> The Equinox Sphere Vision platform provides diagnostic assistance based on statistical probabilities. It is not intended to replace the clinical judgment of a licensed healthcare professional. All predictions should be verified by professional clinical examination. Use of this system constitutes acceptance of our risk-management protocols and liability limitations. © 2024 Equinox Sphere Vision. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

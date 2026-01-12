@@ -1,19 +1,15 @@
 import os
 import pickle
 import numpy as np
-from fastapi import FastAPI
-from pydantic import BaseModel
+from flask import Flask, render_template, request, jsonify
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # =========================
-# 1️⃣ BASE DIRECTORY
+# BASE DIRECTORY
 # =========================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# =========================
-# 2️⃣ MODEL PATHS (RENDER SAFE)
-# =========================
 MODEL_DIR = os.path.join(BASE_DIR, "saved_model")
 
 MODEL_PATH = os.path.join(MODEL_DIR, "disease_lstm_model.keras")
@@ -22,21 +18,14 @@ ENCODER_PATH = os.path.join(MODEL_DIR, "label_encoder.pkl")
 SUPPORT_PATH = os.path.join(MODEL_DIR, "support_data.pkl")
 
 # =========================
-# 3️⃣ SAFETY CHECKS
+# SAFETY CHECK
 # =========================
-required_files = [
-    MODEL_PATH,
-    TOKENIZER_PATH,
-    ENCODER_PATH,
-    SUPPORT_PATH
-]
-
-for file in required_files:
+for file in [MODEL_PATH, TOKENIZER_PATH, ENCODER_PATH, SUPPORT_PATH]:
     if not os.path.exists(file):
-        raise FileNotFoundError(f"❌ Required file missing: {file}")
+        raise FileNotFoundError(f"Missing file: {file}")
 
 # =========================
-# 4️⃣ LOAD MODEL & FILES
+# LOAD MODEL & FILES
 # =========================
 model = load_model(MODEL_PATH)
 
@@ -54,7 +43,7 @@ prec_map = support_data["prec_map"]
 severity_map = support_data["severity_map"]
 
 # =========================
-# 5️⃣ HIGH-RISK DISEASES
+# HIGH RISK DISEASES
 # =========================
 HIGH_RISK_DISEASES = {
     "Paralysis (brain hemorrhage)",
@@ -66,25 +55,14 @@ HIGH_RISK_DISEASES = {
 }
 
 # =========================
-# 6️⃣ FASTAPI APP
+# FLASK APP
 # =========================
-app = FastAPI(
-    title="AI Disease Prediction API",
-    description="AI-based disease prediction using Bi-LSTM (Educational purpose only)",
-    version="1.0"
-)
+app = Flask(__name__)
 
 # =========================
-# 7️⃣ REQUEST MODEL
+# RISK CALCULATION
 # =========================
-class SymptomRequest(BaseModel):
-    symptoms: str  # e.g. "fever, headache, vomiting"
-
-# =========================
-# 8️⃣ RISK CALCULATION
-# =========================
-def calculate_risk(symptom_text: str, disease: str, confidence: float):
-
+def calculate_risk(symptom_text, disease, confidence):
     symptoms = [
         s.strip().lower().replace(" ", "_")
         for s in symptom_text.split(",")
@@ -94,33 +72,33 @@ def calculate_risk(symptom_text: str, disease: str, confidence: float):
 
     if disease in HIGH_RISK_DISEASES and confidence >= 70:
         return "HIGH"
-
     if severity_score >= 30:
         return "HIGH"
     elif severity_score >= 15:
         return "MEDIUM"
-
     if confidence >= 85:
         return "MEDIUM"
-
     return "LOW"
 
 # =========================
-# 9️⃣ ROOT ENDPOINT
+# ROUTES
 # =========================
-@app.get("/")
+@app.route("/")
 def home():
-    return {"message": "AI Disease Prediction API is running 🚀"}
+    return render_template("home.html")
 
-# =========================
-# 🔟 PREDICTION ENDPOINT
-# =========================
-@app.post("/predict")
-def predict_disease(data: SymptomRequest):
+@app.route("/favicon.ico")
+def favicon():
+    return "", 204
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.get_json()
+    symptoms_text = data.get("symptoms", "")
 
     clean_text = " ".join(
         s.strip().lower().replace(" ", "_")
-        for s in data.symptoms.split(",")
+        for s in symptoms_text.split(",")
     )
 
     seq = tokenizer.texts_to_sequences([clean_text])
@@ -132,21 +110,57 @@ def predict_disease(data: SymptomRequest):
     disease = label_encoder.inverse_transform([idx])[0]
     confidence = round(float(probs[idx]) * 100, 2)
 
-    risk = calculate_risk(data.symptoms, disease, confidence)
+    risk = calculate_risk(symptoms_text, disease, confidence)
 
     precautions = [
         p for p in prec_map.get(disease, {}).values()
         if isinstance(p, str)
     ]
 
-    return {
-        "Predicted Disease": disease,
-        "Confidence (%)": confidence,
-        "Risk Level": risk,
-        "Description": desc_map.get(disease, "N/A"),
-        "Precautions": precautions,
-        "Medical_Notice": (
-            "This is an AI-based prediction for educational purposes only. "
-            "It is not a medical diagnosis. Please consult a qualified doctor."
-        )
-    }
+    return jsonify({
+        "disease": disease,
+        "confidence": confidence,
+        "risk": risk,
+        "description": desc_map.get(disease, "N/A"),
+        "precautions": precautions,
+        "notice": "AI prediction only. Consult a doctor."
+    })
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/how-it-works")
+def how_it_works():
+    return render_template("how_it_works.html")
+
+@app.route("/research")
+def research():
+    return render_template("research.html")
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+
+        # Abhi ke liye sirf console me print
+        print("Contact Form Data:")
+        print("Name:", name)
+        print("Email:", email)
+        print("Message:", message)
+
+        return jsonify({
+            "status": "success",
+            "message": "Thank you for contacting us!"
+        })
+
+    return render_template("contact.html")
+
+
+# =========================
+# RUN APP
+# =========================
+if __name__ == "__main__":
+    app.run(debug=True)

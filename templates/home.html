@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Home - AI Health Predictor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .glass-nav {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .dark .glass-nav {
+            background-color: rgba(16, 29, 34, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111618] dark:text-white min-h-screen">
+    <!-- Sticky Top Navigation -->
+    <header class="sticky top-0 z-50 border-b border-solid border-[#dbe3e6] dark:border-[#24363e] glass-nav">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="size-8 text-primary">
+                    <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] dark:text-white">AI Health Predictor</h2>
+            </div>
+            <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                <nav class="flex items-center gap-8">
+                  <a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('home') }}">Home</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('about') }}">About</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('how_it_works') }}">How It Works</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('research') }}">Research</a>
+
+<a class="text-sm font-medium hover:text-primary transition-colors"
+   href="{{ url_for('contact') }}">Contact</a>
+
+                </nav>
+                
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <div class="md:hidden">
+                <span class="material-symbols-outlined">menu</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1100px] mx-auto px-6 py-12 flex flex-col gap-16">
+        <!-- Hero Section -->
+        <section class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="flex-1 flex flex-col gap-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                    <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                    Equinox Sphere Technology
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight dark:text-white">
+                    AI-Powered Disease Prediction System
+                </h1>
+                <p class="text-lg text-[#617f89] dark:text-[#a3b8c0] leading-relaxed max-w-[540px]">
+                    Harnessing Equinox Sphere's proprietary deep-learning models for accurate, real-time health insights and preliminary diagnostic support.
+                </p>
+                
+            </div>
+            <div class="flex-1 w-full">
+                <div class="w-full aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-teal-500/20 flex items-center justify-center relative overflow-hidden border border-white/20">
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, #13b6ec 1px, transparent 0); background-size: 24px 24px;"></div>
+                    <img alt="Doctor using AI tablet" class="w-4/5 h-4/5 object-cover rounded-xl shadow-2xl" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symptom Input Section -->
+        <section class="w-full max-w-[800px] mx-auto flex flex-col gap-4">
+            <div class="flex items-center gap-3 px-4">
+                <span class="material-symbols-outlined text-primary">psychiatry</span>
+                <h2 class="text-2xl font-bold dark:text-white">Enter Your Symptoms</h2>
+            </div>
+            <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-2xl shadow-xl shadow-black/5 border border-[#dbe3e6] dark:border-[#24363e]">
+                <textarea
+                    id="symptomsInput"
+                    class="w-full min-h-32 p-4 text-lg border-none focus:ring-0 bg-transparent"
+                    placeholder="Enter symptoms comma-separated (e.g., fever, cough)..."
+                ></textarea>
+                <div class="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-[#f0f3f4] dark:border-[#24363e] mt-4 gap-4">
+                    <p class="text-sm text-[#617f89]">
+                        <span class="material-symbols-outlined text-base align-middle mr-1">info</span>
+                        AI models are for informational use only.
+                    </p>
+                    <button id="analyzeBtn" class="w-full sm:w-auto bg-primary text-white px-10 py-3 rounded-xl font-bold">
+                        Analyze Symptoms
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Display Section -->
+        <section class="w-full max-w-[800px] mx-auto">
+            <div class="flex items-center justify-between px-4 pb-6">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-[#617f89]">Prediction Result</h3>
+                <span id="livePreview" class="text-xs text-primary font-bold">LIVE PREVIEW</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <!-- Main Result Card -->
+                <div class="md:col-span-3 bg-white dark:bg-[#1a2b32] p-8 rounded-2xl shadow-xl shadow-black/5 border border-[#dbe3e6] dark:border-[#24363e] flex flex-col gap-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm font-medium text-[#617f89] mb-1">Top Prediction</p>
+                            <h4 id="diseaseName" class="text-3xl font-black text-[#111618] dark:text-white">---</h4>
+                        </div>
+                        <span id="riskBadge" class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full text-xs font-bold">
+                            ---
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between text-sm font-bold">
+                            <span>Confidence Level</span>
+                            <span id="confidenceText" class="text-primary">--%</span>
+                        </div>
+                        <div class="w-full h-3 bg-background-light dark:bg-[#24363e] rounded-full overflow-hidden">
+                            <div id="confidenceBar" class="h-full bg-primary rounded-full w-0"></div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-center pt-2">
+                        <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">verified_user</span>
+                        </div>
+                        <p class="text-sm text-[#617f89] leading-tight">
+                            Result based on Equinox V4 Medical dataset analysis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Precautions Card -->
+                <div class="md:col-span-2 bg-[#f0f9ff] dark:bg-[#132c36] p-8 rounded-2xl border border-primary/10 flex flex-col gap-5">
+                    <h4 class="font-bold text-[#111618] dark:text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-xl">medical_services</span>
+                        Precautions
+                    </h4>
+                    <ul id="precautionsList" class="flex flex-col gap-4">
+                        <li class="flex items-start gap-3 text-sm text-[#617f89]">
+                            Enter symptoms to see precautions
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-[#dbe3e6] dark:border-[#24363e] mt-12 bg-white dark:bg-background-dark py-12">
+        <div class="max-w-[1280px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <div class="size-6 text-primary">
+                    <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+                    </svg>
+                </div>
+                <span class="font-bold dark:text-white">AI Health Predictor</span>
+            </div>
+            <p class="text-sm text-[#617f89]">© 2026 Equinox Sphere. For informational purposes only.</p>
+            <div class="flex gap-6">
+                <a class="text-sm font-medium text-[#617f89] hover:text-primary" href="#">Privacy Policy</a>
+                <a class="text-sm font-medium text-[#617f89] hover:text-primary" href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById("analyzeBtn");
+        const symptomsInput = document.getElementById("symptomsInput");
+
+        // Sample data for demonstration
+        const sampleData = {
+            "fever, cough, headache": {
+                disease: "Influenza",
+                confidence: 92,
+                risk: "MEDIUM",
+                precautions: [
+                    "Stay hydrated and maintain rest",
+                    "Monitor body temperature every 4 hours",
+                    "Consult a doctor if symptoms persist beyond 48h",
+                    "Take prescribed antiviral medication",
+                    "Avoid contact with others to prevent spread"
+                ]
+            },
+            "chest pain, shortness of breath": {
+                disease: "Cardiac Issues",
+                confidence: 88,
+                risk: "HIGH",
+                precautions: [
+                    "Seek immediate medical attention",
+                    "Avoid physical exertion",
+                    "Sit in a comfortable position",
+                    "Take prescribed nitroglycerin if available",
+                    "Call emergency services"
+                ]
+            },
+            "rash, itching, swelling": {
+                disease: "Allergic Reaction",
+                confidence: 85,
+                risk: "MEDIUM",
+                precautions: [
+                    "Identify and avoid allergen",
+                    "Take antihistamines as prescribed",
+                    "Apply cold compress to affected area",
+                    "Monitor breathing difficulties",
+                    "Carry epinephrine auto-injector if severe"
+                ]
+            }
+        };
+
+        btn.addEventListener("click", () => {
+            const symptoms = symptomsInput.value.trim().toLowerCase();
+
+            if (!symptoms) {
+                alert("Please enter symptoms");
+                return;
+            }
+
+            btn.innerHTML = "Analyzing...";
+            btn.disabled = true;
+
+            // Simulate API call delay
+            setTimeout(() => {
+                let matchedData = null;
+                
+                // Find matching symptoms
+                for (const key in sampleData) {
+                    if (symptoms.includes(key.split(",")[0].trim())) {
+                        matchedData = sampleData[key];
+                        break;
+                    }
+                }
+
+                // Default to influenza if no match
+                if (!matchedData) {
+                    matchedData = sampleData["fever, cough, headache"];
+                }
+
+                // Update UI
+                document.getElementById("diseaseName").innerText = matchedData.disease;
+                document.getElementById("confidenceText").innerText = matchedData.confidence + "%";
+                document.getElementById("confidenceBar").style.width = matchedData.confidence + "%";
+
+                const riskBadge = document.getElementById("riskBadge");
+                riskBadge.innerText = matchedData.risk + " RISK";
+
+                // Update risk badge color
+                riskBadge.className = "px-3 py-1 rounded-full text-xs font-bold";
+                if (matchedData.risk === "HIGH") {
+                    riskBadge.classList.add("bg-red-100", "text-red-600", "dark:bg-red-900", "dark:text-red-300");
+                } else if (matchedData.risk === "MEDIUM") {
+                    riskBadge.classList.add("bg-orange-100", "text-orange-600", "dark:bg-orange-900", "dark:text-orange-300");
+                } else {
+                    riskBadge.classList.add("bg-green-100", "text-green-600", "dark:bg-green-900", "dark:text-green-300");
+                }
+
+                // Update precautions
+                const list = document.getElementById("precautionsList");
+                list.innerHTML = "";
+                matchedData.precautions.forEach(p => {
+                    const li = document.createElement("li");
+                    li.className = "flex items-start gap-3";
+                    li.innerHTML = `
+                        <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
+                        <span class="text-sm font-medium leading-snug">${p}</span>
+                    `;
+                    list.appendChild(li);
+                });
+
+                // Update live preview text
+                document.getElementById("livePreview").innerText = "RESULTS UPDATED";
+
+                btn.innerHTML = "Analyze Symptoms";
+                btn.disabled = false;
+            }, 1500);
+        });
+
+        // Add sample text on click for testing
+        symptomsInput.addEventListener("click", () => {
+            if (!symptomsInput.value) {
+                symptomsInput.value = "fever, cough, headache";
+            }
+        });
+    </script>
+</body>
+</html>

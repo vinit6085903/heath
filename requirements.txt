@@ -1,7 +1,5 @@
-fastapi
-uvicorn
-pydantic
 tensorflow-cpu
 numpy
 scikit-learn
+flask
 pickle-mixin

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>How It Works - Equinox Sphere AI Pipeline</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#13b6ec",
+                "background-light": "#f6f8f8",
+                "background-dark": "#101d22",
+              },
+              fontFamily: {
+                "display": ["Manrope", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 2px;
+            height: 2rem;
+            background: repeating-linear-gradient(to bottom, #13b6ec 0, #13b6ec 4px, transparent 4px, transparent 8px);
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111618] dark:text-white transition-colors duration-300">
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-[#dbe3e6] dark:border-gray-800">
+        <div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined">science</span>
+                </div>
+                <h2 class="text-xl font-bold tracking-tight">Equinox Sphere</h2>
+            </div>
+            
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('home') }}">Home</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('about') }}">About</a>
+                <a class="text-sm font-semibold text-primary border-b-2 border-primary pb-1" href="{{ url_for('how_it_works') }}">How It Works</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('research') }}">Research</a>
+                <a class="text-sm font-medium hover:text-primary transition-colors" href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+            
+            <!-- Right Side Buttons -->
+           
+        </div>
+    </header>
+
+    <!-- Rest of the code remains the same -->
+    <main class="max-w-[960px] mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section class="mb-16">
+            <div class="@container">
+                <div class="flex flex-col gap-6 bg-gradient-to-br from-[#13b6ec20] to-transparent rounded-2xl p-8 md:p-12 items-center text-center border border-primary/10">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-2">
+                        System Architecture
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-[#111618] dark:text-white max-w-2xl">
+                        Inside the AI Pipeline
+                    </h1>
+                    <p class="text-base md:text-lg text-[#617f89] dark:text-gray-400 max-w-2xl">
+                        A transparent look into how Equinox Sphere's AI Health Predictor analyzes your symptoms through seven distinct stages to deliver clinical-grade insights.
+                    </p>
+                    <div class="flex gap-4 mt-4">
+                        <button class="bg-primary text-white px-6 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 flex items-center gap-2 hover:scale-105 transition-transform">
+                            <span>Launch Analysis</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline / Pipeline Section -->
+        <section class="relative space-y-0">
+            <!-- Step 1 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        1
+                    </div>
+                    <div class="w-0.5 h-20 bg-gradient-to-b from-primary to-[#dbe3e6] dark:to-gray-800"></div>
+                </div>
+                <div class="flex-1 pb-12 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">keyboard</span>
+                            <h3 class="text-xl font-bold">Enter Symptoms</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400">User input collected via an intuitive NLP (Natural Language Processing) interface. We handle conversational descriptions and medical jargon with equal precision.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        2
+                    </div>
+                    <div class="w-0.5 h-20 bg-[#dbe3e6] dark:bg-gray-800"></div>
+                </div>
+                <div class="flex-1 pb-12 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">cleaning_services</span>
+                            <h3 class="text-xl font-bold">Preprocessing</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400">Data cleaning and noise reduction. Our filters remove irrelevant information and standardize medical terminology for the neural network.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        3
+                    </div>
+                    <div class="w-0.5 h-20 bg-[#dbe3e6] dark:bg-gray-800"></div>
+                </div>
+                <div class="flex-1 pb-12 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">segment</span>
+                            <h3 class="text-xl font-bold">Tokenization</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400">Breaking down complex symptoms into machine-readable tensors. Words are converted into multi-dimensional vectors that capture semantic meaning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        4
+                    </div>
+                    <div class="w-0.5 h-20 bg-[#dbe3e6] dark:bg-gray-800"></div>
+                </div>
+                <div class="flex-1 pb-12 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-primary/30 dark:border-primary/50 shadow-lg shadow-primary/5 transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                            <h3 class="text-xl font-bold">LSTM Prediction</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400 font-medium">Core neural network sequence processing. Long Short-Term Memory units analyze the temporal relationship between symptoms to identify patterns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        5
+                    </div>
+                    <div class="w-0.5 h-20 bg-[#dbe3e6] dark:bg-gray-800"></div>
+                </div>
+                <div class="flex-1 pb-12 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">query_stats</span>
+                            <h3 class="text-xl font-bold">Confidence Score</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400">Probability calculation and uncertainty quantification. We don't just give an answer; we tell you exactly how certain the model is about its findings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        6
+                    </div>
+                    <div class="w-0.5 h-20 bg-[#dbe3e6] dark:bg-gray-800"></div>
+                </div>
+                <div class="flex-1 pb-12 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+                            <h3 class="text-xl font-bold">Risk Assessment</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400">Mapping predictions against clinical databases and global health guidelines to categorize the level of medical urgency.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="flex items-start gap-6 group">
+                <div class="flex flex-col items-center">
+                    <div class="size-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg shadow-lg relative z-10 group-hover:scale-110 transition-transform">
+                        7
+                    </div>
+                </div>
+                <div class="flex-1 pt-1">
+                    <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="material-symbols-outlined text-primary text-3xl">description</span>
+                            <h3 class="text-xl font-bold">Results Generation</h3>
+                        </div>
+                        <p class="text-[#617f89] dark:text-gray-400">Generation of a comprehensive diagnostic report, ready to be shared with your healthcare provider for professional verification.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance Features -->
+        <section class="mt-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">shield_with_heart</span>
+                    <h4 class="font-bold mb-2">HIPAA Compliant</h4>
+                    <p class="text-sm text-[#617f89] dark:text-gray-400">Your medical data is protected under the strictest international privacy standards.</p>
+                </div>
+                <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">lock_reset</span>
+                    <h4 class="font-bold mb-2">AES-256 Encryption</h4>
+                    <p class="text-sm text-[#617f89] dark:text-gray-400">End-to-end encryption for all symptom inputs and generated medical reports.</p>
+                </div>
+                <div class="bg-white dark:bg-[#1a2b32] p-6 rounded-xl border border-[#dbe3e6] dark:border-gray-800 flex flex-col items-center text-center">
+                    <span class="material-symbols-outlined text-primary text-4xl mb-4">target</span>
+                    <h4 class="font-bold mb-2">98.4% Accuracy</h4>
+                    <p class="text-sm text-[#617f89] dark:text-gray-400">Validated against extensive clinical datasets and verified by board-certified doctors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mt-20">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-2xl p-10 md:p-16 text-center overflow-hidden relative">
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                        <path d="M0 100 C 20 0, 50 0, 100 100" fill="transparent" stroke="white" stroke-width="0.1"></path>
+                        <path d="M0 80 C 30 20, 70 20, 100 80" fill="transparent" stroke="white" stroke-width="0.1"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black mb-4 relative z-10">Ready to experience the precision?</h2>
+                <p class="text-gray-400 mb-8 max-w-xl mx-auto relative z-10">Start your AI-powered health assessment today and get clinical-grade insights in seconds.</p>
+                <div class="flex justify-center relative z-10">
+                    <button class="bg-primary hover:bg-primary/90 text-white px-10 py-4 rounded-lg font-black text-lg transition-transform hover:scale-105 active:scale-95">
+                        Launch Predictor Now
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#dbe3e6] dark:border-gray-800 bg-white dark:bg-background-dark py-12 px-6">
+        <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="size-6 bg-primary rounded flex items-center justify-center text-white text-[10px]">
+                        <span class="material-symbols-outlined text-xs">science</span>
+                    </div>
+                    <h2 class="text-lg font-bold tracking-tight">Equinox Sphere</h2>
+                </div>
+                <p class="text-sm text-[#617f89] dark:text-gray-400 mb-4">Advancing healthcare through transparent AI integration and clinical-grade diagnostic tools.</p>
+                
+            </div>
+            <div>
+               
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-[#617f89]">Contact</h4>
+                <ul class="space-y-3 text-sm text-[#617f89] dark:text-gray-400">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">mail</span> support@equinoxsphere.ai</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">location_on</span> San Francisco, CA</li>
+                    <li class="flex items-center gap-2 font-bold text-primary"><span class="material-symbols-outlined text-xs">call</span> +1 (800) AI-HEALTH</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-[1280px] mx-auto mt-12 pt-8 border-t border-[#dbe3e6] dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#617f89]">
+            <p>© 2026 Equinox Sphere Technologies. All rights reserved.</p>
+            <p>The AI Health Predictor is an educational tool and does not constitute medical advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactivity to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Launch')) {
+                    alert('Redirecting to the Predictor tool...');
+                    // In real implementation: window.location.href = '/predictor';
+                } else if (this.textContent.includes('Get Started')) {
+                    alert('Starting the onboarding process...');
+                    // In real implementation: window.location.href = '/signup';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
